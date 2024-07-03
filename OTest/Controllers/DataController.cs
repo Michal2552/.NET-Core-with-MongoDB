@@ -41,7 +41,6 @@ namespace OTest.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromBody] BsonDocument userDocument)
-        //מבצעת ולידציה אוטומטית על הנתונים באמצעות המודל המחובר ל-Data Annotation.
          {  await _mongoDbService.AddUser(userDocument);
             return CreatedAtAction(nameof(Get), new { id = userDocument["_id"].ToString() }, userDocument);
         }
