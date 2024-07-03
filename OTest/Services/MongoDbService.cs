@@ -9,7 +9,7 @@ namespace OTest.Services
 {
     public class MongoDbService
     {
-        //private readonly IMongoCollection<BsonDocument> _tokensCollection;
+        private readonly IMongoCollection<BsonDocument> _tokensCollection;
 
         private readonly IMongoCollection<BsonDocument> _usersCollection;
         private readonly ILogger<MongoDbService> _logger;
@@ -77,10 +77,10 @@ namespace OTest.Services
                 _logger.LogError(ex, "An error occurred while adding a new user to MongoDB.");
             }
         }
-        //public async Task StoreToken(string tokenJson)
-        //{
-        //    var document = BsonDocument.Parse(tokenJson);
-        //    await _tokensCollection.InsertOneAsync(document);
-        //}
+        public async Task StoreToken(string tokenJson)
+        {
+            var document = BsonDocument.Parse(tokenJson);
+            await _tokensCollection.InsertOneAsync(document);
+        }
     }
 }
