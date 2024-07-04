@@ -17,7 +17,7 @@ namespace OTest.Services
         public MongoDbService(IConfiguration configuration, ILogger<MongoDbService> logger)
         {
             var client = new MongoClient(configuration.GetConnectionString("MongoDb"));
-            var database = client.GetDatabase("projectOctopus");
+            var database = client.GetDatabase("OTest");
             _usersCollection = database.GetCollection<BsonDocument>("Users");
             _logger = logger;
         }
